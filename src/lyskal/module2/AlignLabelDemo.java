@@ -1,4 +1,4 @@
-package rin2016.module2;
+package lyskal.module2;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.*;

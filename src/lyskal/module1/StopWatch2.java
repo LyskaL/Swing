@@ -1,4 +1,4 @@
-package rin2016.module1;
+package lyskal.module1;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
