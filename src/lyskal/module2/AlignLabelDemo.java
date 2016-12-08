@@ -7,6 +7,7 @@ public class AlignLabelDemo {
 
 	public static void main(final String[] args) {
 		JFrame jFrame = getJFrame();
+		jFrame.setVisible(true);
 	}
 
 	public static JFrame getJFrame() {
@@ -52,7 +53,6 @@ public class AlignLabelDemo {
 		//Пустая рамка создаёт зазор между краем фрейма
 		//и содержащимися в нем элементами 
 		cp.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
-		jfrm.setVisible(true);
 		return jfrm;
 	}
 
