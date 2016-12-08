@@ -4,8 +4,12 @@ import java.awt.*;
 import javax.swing.border.*;
 
 public class AlignLabelDemo {
-	
-	AlignLabelDemo(){
+
+	public static void main(final String[] args) {
+		JFrame jFrame = getJFrame();
+	}
+
+	public static JFrame getJFrame() {
 		JLabel[] jlabs = new JLabel[9];
 		JFrame jfrm = new JFrame("Horizontal and Vertical Alignment");
 		//Установка диспетчера компоновки GridLayout
@@ -49,16 +53,7 @@ public class AlignLabelDemo {
 		//и содержащимися в нем элементами 
 		cp.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 		jfrm.setVisible(true);
-	}
-
-	public static void main(final String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new AlignLabelDemo();
-			}
-		});
-
+		return jfrm;
 	}
 
 }
