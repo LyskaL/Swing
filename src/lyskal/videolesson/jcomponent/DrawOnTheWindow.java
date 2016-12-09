@@ -28,6 +28,7 @@ public class DrawOnTheWindow {
 			return jFrame;
 		}
 		
+		@SuppressWarnings("serial")
 		static class MyComponent extends JComponent{
 			@Override
 			protected void paintComponent(final Graphics g) {
