@@ -7,6 +7,12 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
+/**
+ * The class changes color of the panel depending
+ * on the pressed button.
+ * 
+ * @author LyskaL
+ */
 public class ChangeColorPanel {
 	static JFrame jFrame = getJFrame();
 	static JPanel jPanel = new JPanel();
@@ -19,6 +25,7 @@ public class ChangeColorPanel {
 	static final String STANDART_COLOR = "standart color";
 
 	public static void main(final String[] args) {
+		jFrame.add(jPanel);
 		JButton redButton = new JButton(new ButtonAction());
 		redButton.setText(RED_COLOR);
 		JButton blueButton = new JButton(new ButtonAction());
@@ -29,14 +36,11 @@ public class ChangeColorPanel {
 		yellowButton.setText(YELLOW_COLOR);
 		JButton standardColorButton = new JButton(new ButtonAction());
 		standardColorButton.setText(STANDART_COLOR);
-		jFrame.add(jPanel);
 		jPanel.add(redButton);
 		jPanel.add(greenButton);
 		jPanel.add(blueButton);
 		jPanel.add(yellowButton);
-		jPanel.add(standardColorButton);
-		
-		
+		jPanel.add(standardColorButton);	
 	}
 	
 	static JFrame getJFrame() {
@@ -44,8 +48,10 @@ public class ChangeColorPanel {
 		int height = 150;
 		JFrame jFrame = new JFrame();
 		jFrame.setTitle("Change color panel");
+		//To get expansion of the screen.
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension dimension = toolkit.getScreenSize();
+		//To display a window on the middle.
 		jFrame.setBounds(dimension.width/2-(width/2), 
 						 dimension.height/2-(height/2), 
 						 width, 
@@ -57,7 +63,6 @@ public class ChangeColorPanel {
 	
 	@SuppressWarnings("serial")
 	static class ButtonAction extends AbstractAction{
-
 		@Override
 		public void actionPerformed(final ActionEvent ae) {
 			if(ae.getActionCommand().equals(RED_COLOR)) {
@@ -72,6 +77,5 @@ public class ChangeColorPanel {
 				jPanel.setBackground(standart);		
 			}
 		}
-		
 	}
 }
