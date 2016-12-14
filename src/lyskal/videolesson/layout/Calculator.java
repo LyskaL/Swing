@@ -32,9 +32,9 @@ public class Calculator {
 		createAndAddedButtons(buttons);
 		jPanel.add(buttons);
 	}
+	
 	/**
 	 * Creation of window.
-	 * 
 	 * @return JFrame
 	 */
 	public static JFrame getJFrame() {
