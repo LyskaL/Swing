@@ -21,6 +21,11 @@ public class Calculator {
 	static final String MULTIPLY = "*";
 	static final String DIVISION = "/";
 	static final String EQUALS = "=";
+	
+	static final String[] buttonsName = new String[] {"7", "8", "9", DIVISION, 
+													  "4", "5", "6", MULTIPLY, 
+													  "1", "2", "3", MINUS,
+													  "0", ".", EQUALS, PLUS};
 
 	public static void main(final String[] args) {
 		jFrame.add(jPanel);
@@ -78,68 +83,17 @@ public class Calculator {
 	}
 	
 	/**
-	 * Create buttons from 0 to 10 and buttons of mathematical symbols.
+	 * Create buttons from 0 to 9 and buttons of mathematical symbols.
 	 * Add them on the panel.
 	 * 
 	 * @param buttons - panel on which we will arrange buttons. 
 	 */
 	static void createAndAddedButtons(final JPanel buttons) {
-		JButton seven = new JButton("7");
-		seven.addActionListener(new ButtonAction());
-		JButton eight = new JButton("8");
-		eight.addActionListener(new ButtonAction());
-		JButton nine = new JButton("9");
-		nine.addActionListener(new ButtonAction());
-		JButton division = new JButton(DIVISION);
-		division.addActionListener(new ButtonAction());
-
-		buttons.add(seven);
-		buttons.add(eight);
-		buttons.add(nine);
-		buttons.add(division);
-
-		JButton four = new JButton("4");
-		four.addActionListener(new ButtonAction());
-		JButton five = new JButton("5");
-		five.addActionListener(new ButtonAction());
-		JButton six = new JButton("6");
-		six.addActionListener(new ButtonAction());
-		JButton multiply = new JButton(MULTIPLY);
-		multiply.addActionListener(new ButtonAction());
-
-		buttons.add(four);
-		buttons.add(five);
-		buttons.add(six);
-		buttons.add(multiply);
-
-		JButton one = new JButton("1");
-		one.addActionListener(new ButtonAction());
-		JButton two = new JButton("2");
-		two.addActionListener(new ButtonAction());
-		JButton three = new JButton("3");
-		three.addActionListener(new ButtonAction());
-		JButton minus = new JButton(MINUS);
-		minus.addActionListener(new ButtonAction());
-
-		buttons.add(one);
-		buttons.add(two);
-		buttons.add(three);
-		buttons.add(minus);
-
-		JButton zero = new JButton("0");
-		zero.addActionListener(new ButtonAction());
-		JButton point = new JButton(".");
-		point.addActionListener(new ButtonAction());
-		point.setEnabled(false);
-		JButton equals = new JButton(EQUALS);
-		equals.addActionListener(new ButtonAction());
-		JButton plus = new JButton(PLUS);
-		plus.addActionListener(new ButtonAction());
-		
-		buttons.add(zero);
-		buttons.add(point);
-		buttons.add(equals);
-		buttons.add(plus);
+		for (int i = 0; i < buttonsName.length; i++) {
+			JButton button = new JButton(buttonsName[i]);
+			button.addActionListener(new ButtonAction());
+			buttons.add(button);
+		}
 	}
 	
 	/**
