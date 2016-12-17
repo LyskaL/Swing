@@ -20,7 +20,7 @@ public class CheckBoxDemo implements ItemListener {
 		jFrame.setBounds(500, 250, 350, 200);
 		jFrame.setTitle("Demostrate Chack Box");
 		
-		optionCheckBoxes();
+		setupCheckBoxes();
 		
 		jFrame.add(options);
 		jFrame.add(optionsLabel);
@@ -34,7 +34,7 @@ public class CheckBoxDemo implements ItemListener {
 		jFrame.setVisible(true);
 	}
 	
-	private void optionCheckBoxes() {
+	private void setupCheckBoxes() {
 		speed.setEnabled(false);
 		size.setEnabled(false);
 		debug.setEnabled(false);
@@ -80,11 +80,9 @@ public class CheckBoxDemo implements ItemListener {
 		
 		if(speed.isSelected()){
 			temp.append("Speed ");
-		}
-		if(size.isSelected()){
+		} else if(size.isSelected()){
 			temp.append("Size ");
-		}
-		if(debug.isSelected()){
+		} else if(debug.isSelected()){
 			temp.append("Debug ");
 		}
 		
