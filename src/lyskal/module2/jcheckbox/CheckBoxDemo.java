@@ -80,9 +80,11 @@ public class CheckBoxDemo implements ItemListener {
 		
 		if(speed.isSelected()){
 			temp.append("Speed ");
-		} else if(size.isSelected()){
+		}
+		if(size.isSelected()){
 			temp.append("Size ");
-		} else if(debug.isSelected()){
+		}
+		if(debug.isSelected()){
 			temp.append("Debug ");
 		}
 		
