@@ -11,6 +11,22 @@ public class FileAndColorDialogs {
 	
 	
 	public static void main(final String[] args) {
+		createFilePanel();
+		filePanel.revalidate();
+	}
+	
+	
+	public static JFrame getJFrame() {
+		JFrame jFrame = new JFrame();
+		jFrame.setLayout(new GridLayout(2, 0));
+		jFrame.setTitle("File & Color dialogs");
+		jFrame.setBounds(500, 100, 300, 300);
+		jFrame.setVisible(true);
+		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		return jFrame;
+	}
+	
+	public static void createFilePanel() {
 		filePanel.setLayout(new GridLayout(3, 0));
 		JPanel namePanel = new JPanel();
 		namePanel.add(new JLabel("Name:     "));
@@ -29,19 +45,6 @@ public class FileAndColorDialogs {
 			}
 		});
 		filePanel.add(showDialog);
-		filePanel.revalidate();
 		jFrame.add(filePanel);
-		
-	}
-	
-	
-	public static JFrame getJFrame() {
-		JFrame jFrame = new JFrame();
-		jFrame.setLayout(new GridLayout(2, 0));
-		jFrame.setTitle("File & Color dialogs");
-		jFrame.setBounds(500, 100, 300, 300);
-		jFrame.setVisible(true);
-		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		return jFrame;
 	}
 }
