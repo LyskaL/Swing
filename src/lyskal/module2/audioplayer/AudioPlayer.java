@@ -7,6 +7,7 @@ import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.util.Hashtable;
 
+//Класс для создания интерфейса аудиоплейера.
 public class AudioPlayer implements ChangeListener {
 	JLabel _bassLabel = new JLabel("Bass");
 	JLabel _midrangeLabel = new JLabel("Midrange");
@@ -18,8 +19,8 @@ public class AudioPlayer implements ChangeListener {
 	JSlider _bassSlider = new JSlider(-10, 10);
 	JSlider _midrangeSlider = new JSlider(-10, 10);
 	JSlider _trebleSlider = new JSlider(-10, 10);
-	JSlider _balanceSlider = new JSlider(0, 10, 0);
-	JSlider _volumeSlider = new JSlider(-5, 5);
+	JSlider _balanceSlider = new JSlider(-5, 5);
+	JSlider _volumeSlider = new JSlider(0, 10, 0);
 	
 	JRadioButton _presetOneButton = new JRadioButton("Preset 1");
 	JRadioButton _presetTwoButton = new JRadioButton("Preset 2");
@@ -33,6 +34,8 @@ public class AudioPlayer implements ChangeListener {
 	
 	public AudioPlayer() {
 		JFrame jFrame = getJFrame();
+		JPanel jPanel = new JPanel();
+		jFrame.add(jPanel);
 		//Создание объекта форматирования, который будет
 		//отображать знаки + и -
 		_df = new DecimalFormat("+#;-#");
@@ -77,25 +80,23 @@ public class AudioPlayer implements ChangeListener {
 				loadPreset(_presets[2]);
 			}
 		});
-		Container cp = jFrame.getContentPane();
-		
-		cp.add(_bassLabel);
-		cp.add(_bassSlider);
-		cp.add(_midrangeLabel);
-		cp.add(_midrangeSlider);
-		cp.add(_trebleLabel);
-		cp.add(_trebleSlider);
-		cp.add(_balanceLabel);
-		cp.add(_balanceSlider);
-		cp.add(_volumeLabel);
-		cp.add(_volumeSlider);
-		cp.add(_defaultsButton);
-		cp.add(_presetOneButton);
-		cp.add(_presetTwoButton);
-		
-		cp.add(_storeButton);
-		cp.add(new JLabel(""));
-		cp.add(_infoLabel);
+		jPanel.add(_bassLabel);
+		jPanel.add(_bassSlider);
+		jPanel.add(_midrangeLabel);
+		jPanel.add(_midrangeSlider);
+		jPanel.add(_trebleLabel);
+		jPanel.add(_trebleSlider);
+		jPanel.add(_balanceLabel);
+		jPanel.add(_balanceSlider);
+		jPanel.add(_volumeLabel);
+		jPanel.add(_volumeSlider);
+		jPanel.add(_defaultsButton);
+		jPanel.add(_presetOneButton);
+		jPanel.add(_presetTwoButton);
+		jPanel.add(_storeButton);
+		jPanel.add(new JLabel(""));
+		jPanel.add(_infoLabel);
+		jPanel.revalidate();
 	}
 	
 	@Override
@@ -106,7 +107,6 @@ public class AudioPlayer implements ChangeListener {
 	
 	private void showSettings() {
 		String balance;
-		
 		//Получение установок баланса.
 		int b = _balanceSlider.getValue();
 		if(b > 0) {
@@ -124,30 +124,51 @@ public class AudioPlayer implements ChangeListener {
 	}
 
 	protected void loadPreset(final Presets presets) {
-		// TODO Auto-generated method stub
-		
+		_bassSlider.setValue(presets.getBass());
+		_midrangeSlider.setValue(presets.getMidrange());
+		_trebleSlider.setValue(presets.getTreble());
+		_balanceSlider.setValue(presets.getBalance());
+		_volumeSlider.setValue(presets.getVolume());
 	}
 
 	protected void storePreset(final Presets presets) {
-		// TODO Auto-generated method stub
-		
+		presets.setBass(_bassSlider.getValue());
+		presets.setMidrange(_midrangeSlider.getValue());
+		presets.setTreble(_trebleSlider.getValue());
+		presets.setBalance(_balanceSlider.getValue());
+		presets.setVolume(_volumeSlider.getValue());
 	}
 
 	private void setupRButton() {
-		// TODO Auto-generated method stub
-		
+		//Добавление кнопок к группе.
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(_defaultsButton);
+		bg.add(_presetOneButton);
+		bg.add(_presetTwoButton);
+		//Выбор кнопки Defaults.
+		_defaultsButton.setSelected(true);
 	}
 
 	private void setupLabels() {
-		
-		
-		
-		
+		//Установка размеров меток
+		Dimension labSize = new Dimension(60, 25);
+		_trebleLabel.setPreferredSize(labSize);
+		_midrangeLabel.setPreferredSize(labSize);
+		_bassLabel.setPreferredSize(labSize);
+		_volumeLabel.setPreferredSize(labSize);
+		_balanceLabel.setPreferredSize(labSize);
+		//Создание информационной метки и установка её размеров
+		_infoLabel.setPreferredSize(new Dimension(110, 100));
+		//Заполнение _infoLabel информацией, соответствующей
+		//установкам по умолчанию.
+		showSettings();
 	}
 
 	private void setupPresets() {
-		// TODO Auto-generated method stub
-		
+		_presets = new Presets[3];
+		_presets[0] = new Presets(0, 0, 0, 0, 0);
+		_presets[1] = new Presets(2, -4, 7, 0, 4);
+		_presets[2] = new Presets(3, 3, -2, 1, 7);
 	}
 
 	private void setupSliders() {
@@ -167,8 +188,7 @@ public class AudioPlayer implements ChangeListener {
 			table.put(new Integer(i), new JLabel("" + i));
 		}
 		for (int i = 2; i <= 10; i+=2) {
-			table.put(new Integer(i), new JLabel("+" + i));
-			
+			table.put(new Integer(i), new JLabel("-" + i));
 		}
 		_trebleSlider.setLabelTable(table);
 		_midrangeSlider.setLabelTable(table);

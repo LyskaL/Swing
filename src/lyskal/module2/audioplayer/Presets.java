@@ -1,5 +1,6 @@
 package lyskal.module2.audioplayer;
 
+//Класс хранит варианты установок
 public class Presets {
 	private int _bass;
 	private int _midrange;
