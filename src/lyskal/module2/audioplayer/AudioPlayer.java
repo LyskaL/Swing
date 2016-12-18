@@ -139,7 +139,9 @@ public class AudioPlayer implements ChangeListener {
 	}
 
 	private void setupLabels() {
-		// TODO Auto-generated method stub
+		
+		
+		
 		
 	}
 
@@ -162,9 +164,49 @@ public class AudioPlayer implements ChangeListener {
 		//Создание меток для линейных регуляторов
 		Hashtable<Integer, JLabel> table = new Hashtable<>();
 		for (int i = -10; i <= 0; i+=2) {
-			table.put(new Integer(i), new JLabel(""+ i));
+			table.put(new Integer(i), new JLabel("" + i));
 		}
-		
+		for (int i = 2; i <= 10; i+=2) {
+			table.put(new Integer(i), new JLabel("+" + i));
+			
+		}
+		_trebleSlider.setLabelTable(table);
+		_midrangeSlider.setLabelTable(table);
+		_bassSlider.setLabelTable(table);
+		//Создание меток для линейного регулятора Balance.
+		table = new Hashtable<>();
+		table.put(new Integer(0), new JLabel("Center"));
+		table.put(new Integer(-5), new JLabel("L"));
+		table.put(new Integer(5), new JLabel("R"));
+		_balanceSlider.setLabelTable(table);
+		//Создание стандартных числоых меток для
+		//линейного регулятора Volume.
+		_volumeSlider.setLabelTable(_volumeSlider.createStandardLabels(1));
+		//Разрешение отображения маркеров.
+		_bassSlider.setPaintTicks(true);
+		_midrangeSlider.setPaintTicks(true);
+		_trebleSlider.setPaintTicks(true);
+		_volumeSlider.setPaintTicks(true);
+		_balanceSlider.setPaintTicks(true);
+		//Разрешение отображения меток
+		_bassSlider.setPaintLabels(true);
+		_midrangeSlider.setPaintLabels(true);
+		_trebleSlider.setPaintLabels(true);
+		_volumeSlider.setPaintLabels(true);
+		_balanceSlider.setPaintLabels(true);
+		//Перемещение к ближайшему маркеру
+		_bassSlider.setSnapToTicks(true);
+		_midrangeSlider.setSnapToTicks(true);
+		_trebleSlider.setSnapToTicks(true);
+		_volumeSlider.setSnapToTicks(true);
+		_balanceSlider.setSnapToTicks(true);
+		//Установка предпочтительных размеров линейных регуляторов
+		Dimension sliderSize = new Dimension(240, 60);
+		_bassSlider.setPreferredSize(sliderSize);
+		_midrangeSlider.setPreferredSize(sliderSize);
+		_trebleSlider.setPreferredSize(sliderSize);
+		_volumeSlider.setPreferredSize(sliderSize);
+		_balanceSlider.setPreferredSize(sliderSize);
 	}
 
 	private JFrame getJFrame() {
