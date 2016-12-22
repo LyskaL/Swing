@@ -1,5 +1,6 @@
 package lyskal.singsofzodiac;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
@@ -7,32 +8,35 @@ import javax.swing.*;
 public class Interface {
 	private JFrame jFrame = getJFrame();
 	private JPanel jPanel = new JPanel();
-	private JPanel text = new JPanel();
-	private JPanel button = new JPanel();
-	private JTextField dateText = new JTextField(10);
+	private JTextField date = new JTextField(15);
+	private final ImageIcon image = 
+			new ImageIcon("src//lyskal//singsofzodiac//information//img//sings.png");
 
 	public Interface () {
+		jFrame.add(new JLabel(image));
+		
 		jFrame.add(jPanel);
-		jPanel.setLayout(new GridLayout(3, 1));
-		text.add(new JLabel("Enter your date of birth"));
-		jPanel.add(text);
-		dateText.setText("dd.mm.yyyy");
-		jPanel.add(dateText);
+		jPanel.setLayout(new BorderLayout());
+		
+		jPanel.add(new JLabel("<html><br><br>"), BorderLayout.NORTH);
+		JPanel text = new JPanel();
+		text.add(new JLabel("Enter your date of birth"), BorderLayout.NORTH);
+		jPanel.add(text, BorderLayout.CENTER);
+		
+		date.setText("dd.mm.yyyy");
+		text.add(date, BorderLayout.CENTER);
+		
 		JButton searchButton = new JButton("Search");
 		searchButton.addActionListener(new ButtonAction());
-		button.add(searchButton);
-		jPanel.add(button);
-		
-		SingsOfZodiac sings = new SingsOfZodiac();
-		for (SingOfZodiac sing : sings.getSings()) {
-			System.out.println(sing.toString());
-		}
+		text.add(searchButton, BorderLayout.SOUTH);
 	}
 
-	public static JFrame getJFrame() {
+	public JFrame getJFrame() {
 		JFrame jFrame = new JFrame();
+		jFrame.setLayout(new GridLayout(1, 2));
 		jFrame.setTitle("sings of zodiac");
-		jFrame.setBounds(500, 200, 300, 135);
+		jFrame.setBounds(500, 200, 400, 200);
+		jFrame.setResizable(false);
 		jFrame.setVisible(true);
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		return jFrame;
@@ -43,11 +47,12 @@ public class Interface {
 		@Override
 		public void actionPerformed(final ActionEvent ae) {
 			if (ae.getActionCommand().equals("Search")) {
-				if(Validator.isValidDate(dateText.getText())) {
-					//TODO вывести сообщение о некоректности введёной даты
-				} else {
+				if(Validator.isValidDate(date.getText())) {
 					//TODO если дата корректна вызвать новое окошко, 
 					//куда будет вынесена информация о знаке зодиака
+				} else {
+					JOptionPane.showMessageDialog(jFrame, "You have entered the not correct date!",
+							"Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		}
