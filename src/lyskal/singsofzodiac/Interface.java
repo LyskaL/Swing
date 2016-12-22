@@ -16,11 +16,17 @@ public class Interface {
 		jPanel.setLayout(new GridLayout(3, 1));
 		text.add(new JLabel("Enter your date of birth"));
 		jPanel.add(text);
+		dateText.setText("dd.mm.yyyy");
 		jPanel.add(dateText);
 		JButton searchButton = new JButton("Search");
 		searchButton.addActionListener(new ButtonAction());
 		button.add(searchButton);
 		jPanel.add(button);
+		
+		SingsOfZodiac sings = new SingsOfZodiac();
+		for (SingOfZodiac sing : sings.getSings()) {
+			System.out.println(sing.toString());
+		}
 	}
 
 	public static JFrame getJFrame() {
@@ -37,7 +43,12 @@ public class Interface {
 		@Override
 		public void actionPerformed(final ActionEvent ae) {
 			if (ae.getActionCommand().equals("Search")) {
-				jFrame.setTitle("вот и я ");
+				if(Validator.isValidDate(dateText.getText())) {
+					//TODO вывести сообщение о некоректности введёной даты
+				} else {
+					//TODO если дата корректна вызвать новое окошко, 
+					//куда будет вынесена информация о знаке зодиака
+				}
 			}
 		}
 	}
