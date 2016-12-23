@@ -1,8 +1,11 @@
 package lyskal.singsofzodiac;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class Interface {
@@ -23,7 +26,8 @@ public class Interface {
 		text.add(new JLabel("Enter your date of birth"), BorderLayout.NORTH);
 		jPanel.add(text, BorderLayout.CENTER);
 		
-		date.setText("dd.mm.yyyy");
+		//date.setText("13.04.1993");
+		date.setToolTipText("dd.mm.yyyy");
 		text.add(date, BorderLayout.CENTER);
 		
 		JButton searchButton = new JButton("Search");
@@ -53,6 +57,7 @@ public class Interface {
 				} else {
 					JOptionPane.showMessageDialog(jFrame, "You have entered the not correct date!",
 							"Error", JOptionPane.ERROR_MESSAGE);
+					date.setText("");
 				}
 			}
 		}
