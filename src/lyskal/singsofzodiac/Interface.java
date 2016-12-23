@@ -26,7 +26,7 @@ public class Interface {
 		text.add(new JLabel("Enter your date of birth"), BorderLayout.NORTH);
 		jPanel.add(text, BorderLayout.CENTER);
 		
-		//date.setText("13.04.1993");
+		date.setText("13.04.1993");
 		date.setToolTipText("dd.mm.yyyy");
 		text.add(date, BorderLayout.CENTER);
 		
@@ -54,6 +54,8 @@ public class Interface {
 				if(Validator.isValidDate(date.getText())) {
 					//TODO если дата корректна вызвать новое окошко, 
 					//куда будет вынесена информация о знаке зодиака
+					MyDialog dialog = new MyDialog();
+					dialog.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(jFrame, "You have entered the not correct date!",
 							"Error", JOptionPane.ERROR_MESSAGE);
@@ -70,5 +72,29 @@ public class Interface {
 				new Interface();
 			}
 		});
+	}
+	
+	@SuppressWarnings("serial")
+	class MyDialog extends JDialog {
+		public MyDialog(){
+			super(jFrame, "My window", true);
+			JButton ok = new JButton("OK");
+			ok.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(final ActionEvent ae) {
+					setVisible(false);
+				}
+			});
+			Font font = new Font("Arial", 0, 16);
+			JLabel text = new JLabel("Yout sing");
+			text.setFont(font);
+			
+			add(text, BorderLayout.CENTER);
+			add(ok, BorderLayout.SOUTH);
+			ok.setBounds(5, 5, 100, 20);
+			
+			setBounds(450, 150, 480, 350);
+			setVisible(true);
+		}
 	}
 }
