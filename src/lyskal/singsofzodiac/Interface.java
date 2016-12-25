@@ -11,7 +11,7 @@ public class Interface {
 	private JPanel jPanel = new JPanel();
 	private JTextField date = new JTextField(10);
 	private final ImageIcon image = 
-			new ImageIcon("src//lyskal//singsofzodiac//information//img//sings.png");
+			new ImageIcon(ClassLoader.getSystemClassLoader().getResource("lyskal/singsofzodiac/information/sings.png"));
 
 	public Interface () {
 		_sings = new SingsOfZodiac();

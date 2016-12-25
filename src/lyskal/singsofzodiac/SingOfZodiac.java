@@ -49,6 +49,7 @@ public class SingOfZodiac {
 	}
 	
 	public boolean isDateInRange (final int bithDay, final int bithMonth) {
+		System.out.println("Date is - " + _date);
 		int firstDay = Integer.parseInt(_date.substring(0, 2));
 		int firstMonth = Integer.parseInt(_date.substring(3, 5));
 		int secondDay = Integer.parseInt(_date.substring(6, 8));
@@ -74,6 +75,6 @@ public class SingOfZodiac {
 	}
 
 	public void setImage(final String imagePath) {
-		_image = new ImageIcon(imagePath);
+		_image = new ImageIcon(ClassLoader.getSystemClassLoader().getResource(imagePath));
 	}
 }
