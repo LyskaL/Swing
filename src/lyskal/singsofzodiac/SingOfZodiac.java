@@ -73,7 +73,7 @@ public class SingOfZodiac {
 		return _image;
 	}
 
-	public void setImage(final String imagePath) {
-		_image = new ImageIcon(imagePath);
+	public void setImage(final ImageIcon image) {
+		_image = image;
 	}
 }

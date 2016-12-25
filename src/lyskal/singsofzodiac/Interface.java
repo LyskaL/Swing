@@ -10,11 +10,13 @@ public class Interface {
 	private JFrame jFrame = getJFrame();
 	private JPanel jPanel = new JPanel();
 	private JTextField date = new JTextField(10);
-	private final ImageIcon image = 
-			new ImageIcon("src//lyskal//singsofzodiac//information//img//sings.png");
+	private ImageIcon image;
 
 	public Interface () {
 		_sings = new SingsOfZodiac();
+		//URL urll = getClass().getResource("res/img/sings.png");
+		//System.out.println(urll);
+		image = new ImageIcon(getClass().getResource("res/img/sings.png"));
 		
 		jFrame.add(new JLabel(image));
 		jFrame.add(jPanel);

@@ -1,11 +1,11 @@
 package lyskal.singsofzodiac;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.ImageIcon;
 
 public class SingsOfZodiac {
 	private List<SingOfZodiac> _sings;
@@ -13,30 +13,35 @@ public class SingsOfZodiac {
 
 	public SingsOfZodiac() {
 		_sings = new ArrayList<>(SIZE_LIST);
-		readDataTromFile();
-		addImages();
+		
+		readDataTromFile("res/text/Aries.txt");
+		readDataTromFile("res/text/Aquarius.txt");
+		readDataTromFile("res/text/Cancer.txt");
+		readDataTromFile("res/text/Capricorn.txt");
+		readDataTromFile("res/text/Gemini.txt");
+		readDataTromFile("res/text/Leo.txt");
+		readDataTromFile("res/text/Libra.txt");
+		readDataTromFile("res/text/Pisces.txt");
+		readDataTromFile("res/text/Sagittarius.txt");
+		readDataTromFile("res/text/Scorpio.txt");
+		readDataTromFile("res/text/Taurus.txt");
+		readDataTromFile("res/text/Virgo.txt");
 	}
 	
-	private void addImages() {
-		File actual = new File("src//lyskal//singsofzodiac//information//img");
-		for (SingOfZodiac singOfZodiac : _sings) {
-			for (File f : actual.listFiles()) {
-				String nameImg = f.getName().substring(0, (f.getName().length()-4));
-				if(singOfZodiac.getName().equals(nameImg)){
-					singOfZodiac.setImage(f.getPath());
-					break;
-				}
-			}
-		}
+	private void addImages(final SingOfZodiac sing) {
+		String path = "res/img/" + sing.getName() +".png";
+		URL url = getClass().getResource((path));
+		ImageIcon image = new ImageIcon(url);
+		sing.setImage(image);
 	}
 
-	@SuppressWarnings("resource")
-	private void readDataTromFile() {
-		File actual = new File("src//lyskal//singsofzodiac//information//text");
-		for (File f : actual.listFiles()) {
+	private void readDataTromFile(final String path) {
+		//InputStream in = getClass().getResourceAsStream("res/text/Aries.txt");
+		//BufferedReader fin = new BufferedReader(new InputStreamReader(in));
+		InputStream in = getClass().getResourceAsStream(path);
 			try {
 				SingOfZodiac temp = new SingOfZodiac();
-				BufferedReader fin = new BufferedReader(new FileReader(f.getAbsoluteFile()));
+				BufferedReader fin = new BufferedReader(new InputStreamReader(in));
 				String line;
 				int counterLine = 0;
 				while ((line = fin.readLine()) != null) {
@@ -51,12 +56,11 @@ public class SingsOfZodiac {
 						temp.setDescription(line+"\n");
 					}
 				}
+				addImages(temp);
 				_sings.add(temp);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
-		
 	}
 
 	public SingOfZodiac getSing(final int index) {
