@@ -21,7 +21,6 @@ public class SingsOfZodiac {
 	@SuppressWarnings("resource")
 	void readDataTromFile() {
 		File actual = new File("src//lyskal//singsofzodiac//information//text");
-		
 		/*for (File f : actual.listFiles()) {
 			System.out.println(f.getName());
 		}
@@ -52,8 +51,20 @@ public class SingsOfZodiac {
 		
 	}
 
-	SingOfZodiac getSing (final int index) {
+	SingOfZodiac getSing(final int index) {
 		return _sings.get(index);
+	}
+	
+	SingOfZodiac getSing(final String date) {
+		int day = Integer.parseInt(date.substring(0, 2));
+		int month = Integer.parseInt(date.substring(3, 5));
+		
+		for (SingOfZodiac singOfZodiac : _sings) {
+			if(singOfZodiac.isDateInRange(day, month)) {
+				return singOfZodiac;
+			}
+		}
+		return null;
 	}
 	
 	Collection<SingOfZodiac> getSings () {
