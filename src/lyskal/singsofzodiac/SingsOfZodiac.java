@@ -5,21 +5,33 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class SingsOfZodiac {
 	private List<SingOfZodiac> _sings;
 	final int SIZE_LIST = 12;
 
-	SingsOfZodiac() {
+	public SingsOfZodiac() {
 		_sings = new ArrayList<>(SIZE_LIST);
 		readDataTromFile();
+		addImages();
+	}
+	
+	private void addImages() {
+		File actual = new File("src//lyskal//singsofzodiac//information//img");
+		for (SingOfZodiac singOfZodiac : _sings) {
+			for (File f : actual.listFiles()) {
+				String nameImg = f.getName().substring(0, (f.getName().length()-4));
+				if(singOfZodiac.getName().equals(nameImg)){
+					singOfZodiac.setImage(f.getPath());
+					break;
+				}
+			}
+		}
 	}
 
 	@SuppressWarnings("resource")
-	void readDataTromFile() {
+	private void readDataTromFile() {
 		File actual = new File("src//lyskal//singsofzodiac//information//text");
 		/*for (File f : actual.listFiles()) {
 			System.out.println(f.getName());
@@ -51,11 +63,11 @@ public class SingsOfZodiac {
 		
 	}
 
-	SingOfZodiac getSing(final int index) {
+	public SingOfZodiac getSing(final int index) {
 		return _sings.get(index);
 	}
 	
-	SingOfZodiac getSing(final String date) {
+	public SingOfZodiac getSing(final String date) {
 		int day = Integer.parseInt(date.substring(0, 2));
 		int month = Integer.parseInt(date.substring(3, 5));
 		
@@ -65,9 +77,5 @@ public class SingsOfZodiac {
 			}
 		}
 		return null;
-	}
-	
-	Collection<SingOfZodiac> getSings () {
-		return Collections.unmodifiableCollection(_sings);
 	}
 }

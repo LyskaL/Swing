@@ -9,30 +9,24 @@ public class Interface {
 	
 	private JFrame jFrame = getJFrame();
 	private JPanel jPanel = new JPanel();
-	private JTextField date = new JTextField(15);
+	private JTextField date = new JTextField(10);
 	private final ImageIcon image = 
 			new ImageIcon("src//lyskal//singsofzodiac//information//img//sings.png");
 
 	public Interface () {
 		_sings = new SingsOfZodiac();
 		
-	/*	String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-		for (int i = 0; i < fonts.length; i++) {
-			System.out.println(fonts[i]);
-		}*/
-		
 		jFrame.add(new JLabel(image));
-		
 		jFrame.add(jPanel);
 		jPanel.setLayout(new BorderLayout());
 		
 		jPanel.add(new JLabel("<html><br><br>"), BorderLayout.NORTH);
 		JPanel text = new JPanel();
-		text.add(new JLabel("Enter your date of birth"), BorderLayout.NORTH);
+		text.add(new JLabel("Enter the day and month of birth"), BorderLayout.NORTH);
 		jPanel.add(text, BorderLayout.CENTER);
 		
-		date.setText("13.04.1993");
-		date.setToolTipText("dd.mm.yyyy");
+		date.setText("13.04");
+		date.setToolTipText("dd.mm");
 		text.add(date, BorderLayout.CENTER);
 		
 		JButton searchButton = new JButton("Search");
@@ -92,9 +86,7 @@ public class Interface {
 				(BorderFactory.createEtchedBorder(HIDE_ON_CLOSE, Color.WHITE, Color.GRAY));
 			
 			//добавить картинку знака
-			ImageIcon image = 
-					new ImageIcon("src//lyskal//singsofzodiac//information//img//Pisces2.png");
-			panel.add(new JLabel(image), new GridBagConstraints(0, 0, 1, 3, 1, 1,
+			panel.add(new JLabel(sing.getImage()), new GridBagConstraints(0, 0, 1, 4, 1, 1,
 					GridBagConstraints.NORTH, GridBagConstraints.BOTH, 
 					new Insets(1, 1, 1, 1), 0, 0));
 			

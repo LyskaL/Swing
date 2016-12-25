@@ -12,7 +12,7 @@ public class Validator {
 		
 		@SuppressWarnings("serial")
 		private static final SimpleDateFormat DATE_FORMAT = 
-				new SimpleDateFormat("dd.MM.yyyy") {{setLenient(false);}};
+				new SimpleDateFormat("dd.MM") {{setLenient(false);}};
 		
 		/**
 		 * Check a date correctness.

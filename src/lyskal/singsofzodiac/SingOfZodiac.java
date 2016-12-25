@@ -1,52 +1,54 @@
 package lyskal.singsofzodiac;
 
+import javax.swing.ImageIcon;
 
 public class SingOfZodiac {
 	private String _name;
 	private String _element;
 	private String _date;
 	private String _description;
+	private ImageIcon _image;
 	
-	SingOfZodiac() {
+	public SingOfZodiac() {
 		_name = "";
 		_element = "";
 		_date = "";
 		_description = "";
 	}
 	
-	String getName() {
+	public String getName() {
 		return _name;
 	}
 	
-	String getElement() {
+	public String getElement() {
 		return _element;
 	}
 	
-	String getDate() {
+	public String getDate() {
 		return _date;
 	}
 
-	String getDescription() {
+	public String getDescription() {
 		return _description;
 	}
 	
-	void setName(final String name) {
+	public void setName(final String name) {
 		_name = name;
 	}
 	
-	void setElement(final String element) {
+	public void setElement(final String element) {
 		_element = element;
 	}
 	
-	void setDate(final String date) {
+	public void setDate(final String date) {
 		_date = date;
 	}
 	
-	void setDescription(final String description) {
+	public void setDescription(final String description) {
 		_description += description;
 	}
 	
-	boolean isDateInRange (final int bithDay, final int bithMonth) {
+	public boolean isDateInRange (final int bithDay, final int bithMonth) {
 		int firstDay = Integer.parseInt(_date.substring(0, 2));
 		int firstMonth = Integer.parseInt(_date.substring(3, 5));
 		int secondDay = Integer.parseInt(_date.substring(6, 8));
@@ -65,5 +67,13 @@ public class SingOfZodiac {
 	public String toString() {
 		return "SingOfZodiac [_name=" + _name + ", _element=" + _element + ", _date=" + _date + ", _description="
 				+ _description + "]";
+	}
+
+	public ImageIcon getImage() {
+		return _image;
+	}
+
+	public void setImage(final String imagePath) {
+		_image = new ImageIcon(imagePath);
 	}
 }
