@@ -25,7 +25,6 @@ public class Interface {
 		text.add(new JLabel("Enter the day and month of birth"), BorderLayout.NORTH);
 		jPanel.add(text, BorderLayout.CENTER);
 		
-		date.setText("13.04");
 		date.setToolTipText("dd.mm");
 		text.add(date, BorderLayout.CENTER);
 		

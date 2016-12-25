@@ -33,10 +33,6 @@ public class SingsOfZodiac {
 	@SuppressWarnings("resource")
 	private void readDataTromFile() {
 		File actual = new File("src//lyskal//singsofzodiac//information//text");
-		/*for (File f : actual.listFiles()) {
-			System.out.println(f.getName());
-		}
-		*/
 		for (File f : actual.listFiles()) {
 			try {
 				SingOfZodiac temp = new SingOfZodiac();
