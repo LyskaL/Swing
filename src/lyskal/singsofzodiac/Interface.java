@@ -14,8 +14,6 @@ public class Interface {
 
 	public Interface () {
 		_sings = new SingsOfZodiac();
-		//URL urll = getClass().getResource("res/img/sings.png");
-		//System.out.println(urll);
 		image = new ImageIcon(getClass().getResource("res/img/sings.png"));
 		
 		jFrame.add(new JLabel(image));
