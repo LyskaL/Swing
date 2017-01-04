@@ -10,12 +10,10 @@ public class JProgressDemo {
 	
 	private JLabel _horizontalLabel;
 	private JLabel _verticalLabel;
-	
 	private JProgressBar _horizontalBar;
 	private JProgressBar _verticalBar;
-	
-	private JButton _pushButton = new JButton("Push me");
-	private JButton _cleanButton = new JButton("Clean");
+	private JButton _pushButton;
+	private JButton _cleanButton;
 	
 	public JProgressDemo() {
 		getFrame();
@@ -26,6 +24,33 @@ public class JProgressDemo {
 		
 		_horizontalLabel = new JLabel("Value of horizontal: " + _horizontalBar.getValue());
 		_verticalLabel = new JLabel("Value of vertical: " + _verticalBar.getValue());
+		
+		setupButtons();
+		_panel.setLayout(new GridBagLayout());
+		JPanel bars = new JPanel();
+		bars.add(_horizontalBar);
+		bars.add(_verticalBar);
+		_panel.add(bars, new GridBagConstraints(0, 0, 5, 5, 1, 1,
+				GridBagConstraints.NORTH, GridBagConstraints.BOTH, 
+				new Insets(1, 1, 1, 1), 0, 0));
+		_panel.add(_horizontalLabel, new GridBagConstraints(2, 5, 3, 1, 1, 1,
+				GridBagConstraints.NORTH, GridBagConstraints.NONE, 
+				new Insets(1, 1, 1, 1), 0, 0));
+		_panel.add(_verticalLabel, new GridBagConstraints(2, 6, 3, 1, 1, 1,
+				GridBagConstraints.NORTH, GridBagConstraints.NONE, 
+				new Insets(1, 1, 1, 1), 0, 0));
+		
+		_panel.add(_pushButton, new GridBagConstraints(2, 7, 3, 1, 1, 1,
+				GridBagConstraints.CENTER, GridBagConstraints.NONE, 
+				new Insets(1, 1, 1, 1), 0, 0));
+		_panel.add(_cleanButton, new GridBagConstraints(2, 8, 3, 1, 1, 1,
+				GridBagConstraints.CENTER, GridBagConstraints.NONE, 
+				new Insets(1, 1, 1, 1), 0, 0));
+	}
+	
+	private void setupButtons() {
+		_pushButton = new JButton("Push me");
+		_cleanButton = new JButton("Clean");
 		
 		_pushButton.addActionListener(new ActionListener() {
 			@Override
@@ -55,28 +80,6 @@ public class JProgressDemo {
 				_verticalLabel.setText("Value of vertical: 0");
 			}
 		});
-		
-		JPanel bars = new JPanel();
-		bars.add(_horizontalBar);
-		bars.add(_verticalBar);
-		_panel.setLayout(new GridBagLayout());
-		_panel.add(bars, new GridBagConstraints(0, 0, 5, 5, 1, 1,
-				GridBagConstraints.NORTH, GridBagConstraints.BOTH, 
-				new Insets(1, 1, 1, 1), 0, 0));
-		
-		JPanel labels = new JPanel(new GridLayout(2, 1));
-		labels.add(_horizontalLabel);
-		labels.add(_verticalLabel);
-		_panel.add(labels, new GridBagConstraints(2, 5, 3, 2, 1, 1,
-				GridBagConstraints.NORTH, GridBagConstraints.NONE, 
-				new Insets(1, 1, 1, 1), 0, 0));
-		
-		_panel.add(_pushButton, new GridBagConstraints(2, 7, 3, 1, 1, 1,
-				GridBagConstraints.CENTER, GridBagConstraints.NONE, 
-				new Insets(1, 1, 1, 1), 0, 0));
-		_panel.add(_cleanButton, new GridBagConstraints(2, 8, 3, 1, 1, 1,
-				GridBagConstraints.CENTER, GridBagConstraints.NONE, 
-				new Insets(1, 1, 1, 1), 0, 0));
 	}
 	
 	private void getFrame() {
