@@ -1,10 +1,8 @@
 package lyskal.module3.JProgressBar;
 
 import javax.swing.*;
-
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
 public class JProgressDemo {
 	private JFrame _frame;
@@ -48,26 +46,42 @@ public class JProgressDemo {
 			}
 		});
 		
+		_cleanButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(final ActionEvent e) {
+				_horizontalBar.setValue(0);
+				_verticalBar.setValue(0);
+				_horizontalLabel.setText("Value of horizontal: 0");
+				_verticalLabel.setText("Value of vertical: 0");
+			}
+		});
+		
 		JPanel bars = new JPanel();
 		bars.add(_horizontalBar);
 		bars.add(_verticalBar);
-		_panel.setLayout(new GridLayout(3, 1));
-		_panel.add(bars);
-		//_panel.add(_verticalBar);
+		_panel.setLayout(new GridBagLayout());
+		_panel.add(bars, new GridBagConstraints(0, 0, 5, 5, 1, 1,
+				GridBagConstraints.NORTH, GridBagConstraints.BOTH, 
+				new Insets(1, 1, 1, 1), 0, 0));
+		
 		JPanel labels = new JPanel(new GridLayout(2, 1));
 		labels.add(_horizontalLabel);
 		labels.add(_verticalLabel);
-		_panel.add(labels);
-		//_panel.add(_verticalLabel);
-		JPanel buttons = new JPanel();
-		buttons.add(_pushButton);
+		_panel.add(labels, new GridBagConstraints(2, 5, 3, 2, 1, 1,
+				GridBagConstraints.NORTH, GridBagConstraints.NONE, 
+				new Insets(1, 1, 1, 1), 0, 0));
 		
-		_panel.add(_pushButton);
+		_panel.add(_pushButton, new GridBagConstraints(2, 7, 3, 1, 1, 1,
+				GridBagConstraints.CENTER, GridBagConstraints.NONE, 
+				new Insets(1, 1, 1, 1), 0, 0));
+		_panel.add(_cleanButton, new GridBagConstraints(2, 8, 3, 1, 1, 1,
+				GridBagConstraints.CENTER, GridBagConstraints.NONE, 
+				new Insets(1, 1, 1, 1), 0, 0));
 	}
 	
 	private void getFrame() {
 		_frame = new JFrame("Progress Bar");
-		_frame.setBounds(500, 150, 350, 400);
+		_frame.setBounds(500, 150, 300, 300);
 		_frame.setVisible(true);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
