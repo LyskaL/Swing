@@ -4,8 +4,8 @@ import llyska.multithreaded.bounce.interfaces.BallPanel;
 
 public class BallRunnable implements Runnable {
 
-    public static final int STEPS = 1600;
-    public static final int DELAY = 5;
+    public static final int STEPS = 1000;
+    public static final int DELAY = 4;
 
     private final BallPanel _panel;
     private final Ball _ball;

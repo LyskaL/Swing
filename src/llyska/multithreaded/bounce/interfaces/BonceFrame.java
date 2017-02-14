@@ -13,11 +13,10 @@ import llyska.multithreaded.bounce.entities.BallRunnable;
 
 public class BonceFrame extends JFrame {
     private final BallPanel _panel;
+    private final Ball ball = new Ball();
 
     public static final int DEFAULT_WIDTH = 400;
     public static final int DEFAULT_HEIGHT = 300;
-    public static final int STEPS = 1200;
-    public static final int DELAY = 4;
 
     public BonceFrame() {
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -47,7 +46,7 @@ public class BonceFrame extends JFrame {
     }
 
     private void addBall() {
-            Ball ball = new Ball();
+
             _panel.add(ball);
 
             Runnable run = new BallRunnable(ball, _panel);
